@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1 class="mb-4">All Pages</h1>
+
+    {% if entries %}
+        <ul class="list-group list-group-flush col-md-6 pl-0">
+            {% for entry in entries %}
+                <li class="list-group-item pl-0" style="border: none; background: transparent;">
+                    <a href="{% url 'entry' title=entry %}" class="font-weight-bold" style="font-size: 1.2rem;">
+                        {{ entry }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No pages have been added to the encyclopedia yet.</p>
+    {% endif %}
+{% endblock %}

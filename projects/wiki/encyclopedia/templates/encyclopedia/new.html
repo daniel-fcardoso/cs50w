@@ -1,0 +1,31 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Create New Wiki Entry</h1>
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form action="{% url 'new_page' %}" method="POST" class="mt-4">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="title">Page Title:</label>
+            <input type="text" name="title" id="title" class="form-control" value="{{ title|default:'' }}" required placeholder="Ex: Django">
+        </div>
+
+        <div class="form-group">
+            <label for="content">Content (in Markdown format):</label>
+            <textarea name="content" id="content" class="form-control" rows="10" required placeholder="# Main Title&#10;&#10;Write your text here in Markdown...">{{ content|default:'' }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Page</button>
+    </form>
+{% endblock %}

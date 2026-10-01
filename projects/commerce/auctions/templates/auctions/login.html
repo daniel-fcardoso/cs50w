@@ -1,0 +1,72 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-logo">
+                CS50 <span>COMMERCE</span>
+            </div>
+
+            <h2>Sign in</h2>
+
+            {% if message %}
+                <div class="auth-message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+
+                <div class="auth-form-group">
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        autofocus
+                        id="username"
+                        type="text"
+                        name="username"
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="auth-form-group">
+                    <div class="password-label">
+                        <label for="password">
+                            Password
+                        </label>
+                    </div>
+
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <button class="auth-button" type="submit">
+                    Sign in
+                </button>
+            </form>
+
+            <p class="auth-terms">
+                By continuing, you agree to the CS50 COMMERCE
+                terms and conditions.
+            </p>
+
+            <div class="auth-divider">
+                <span>New to CS50 COMMERCE?</span>
+            </div>
+
+            <a
+                class="create-account-button"
+                href="{% url 'register' %}"
+            >
+                Create your CS50 COMMERCE account
+            </a>
+        </div>
+    </div>
+{% endblock %}

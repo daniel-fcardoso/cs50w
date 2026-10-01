@@ -1,0 +1,66 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="page-header">
+        <h2>{{ category_name }}</h2>
+        <p>Browse active listings in this category.</p>
+    </div>
+
+    <div class="listing-grid">
+        {% for listing in listings %}
+            <article class="listing-card">
+                <a
+                    class="listing-image-link"
+                    href="{% url 'listing' listing.id %}"
+                >
+                    {% if listing.image_url %}
+                        <img
+                            class="listing-image"
+                            src="{{ listing.image_url }}"
+                            alt="{{ listing.title }}"
+                        >
+                    {% else %}
+                        <div class="listing-image-placeholder">
+                            No image
+                        </div>
+                    {% endif %}
+                </a>
+
+                <div class="listing-card-body">
+                    <span class="listing-category">
+                        {{ listing.category }}
+                    </span>
+
+                    <h3 class="listing-title">
+                        <a href="{% url 'listing' listing.id %}">
+                            {{ listing.title }}
+                        </a>
+                    </h3>
+
+                    <p class="listing-description">
+                        {{ listing.description }}
+                    </p>
+
+                    <div class="listing-price">
+                        <span>Starting bid</span>
+                        <strong>${{ listing.starting_bid }}</strong>
+                    </div>
+
+                    <a
+                        class="view-listing-button"
+                        href="{% url 'listing' listing.id %}"
+                    >
+                        View Listing
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <h3>No active listings</h3>
+                <p>
+                    There are no active listings in this category.
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

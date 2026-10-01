@@ -1,0 +1,139 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    {% if user.is_authenticated %}
+        <div class="card mb-4">
+            <div class="card-body">
+
+                <h4>New Post</h4>
+
+                <form method="POST">
+                    {% csrf_token %}
+
+                    <textarea
+                        class="form-control mb-2"
+                        name="content"
+                        rows="3"
+                        placeholder="What's happening?"
+                        required
+                    ></textarea>
+
+                    <button
+                        class="btn btn-primary"
+                        type="submit"
+                    >
+                        Post
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    {% endif %}
+
+    <h3>All Posts</h3>
+
+    {% for post in page_obj %}
+
+        <div class="card mb-3" id="post-{{ post.id }}">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    <a href="{% url 'profile' post.user.username %}">
+                        {{ post.user.username }}
+                    </a>
+                </h5>
+
+                <p
+                    class="card-text post-content"
+                    id="content-{{ post.id }}"
+                >
+                    {{ post.content }}
+                </p>
+
+                {% if user == post.user %}
+                    <button
+                        class="btn btn-sm btn-outline-primary edit-button"
+                        data-post-id="{{ post.id }}"
+                    >
+                        Edit
+                    </button>
+                {% endif %}
+
+                <p class="text-muted mt-2">
+                    {{ post.timestamp }}
+                </p>
+
+                {% if user.is_authenticated %}
+                    <button
+                        class="btn btn-sm btn-outline-danger like-button"
+                        data-post-id="{{ post.id }}"
+                    >
+                        {% if user in post.likes.all %}
+                            Unlike
+                        {% else %}
+                            Like
+                        {% endif %}
+                    </button>
+                {% endif %}
+
+                <span id="likes-count-{{ post.id }}">
+                    ❤️ {{ post.likes.count }}
+                </span>
+
+            </div>
+        </div>
+
+    {% empty %}
+
+        <p>No posts yet.</p>
+
+    {% endfor %}
+
+
+    {% if page_obj.paginator.num_pages > 1 %}
+
+        <nav>
+            <ul class="pagination">
+
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="?page={{ page_obj.previous_page_number }}"
+                        >
+                            Previous
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    </span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="?page={{ page_obj.next_page_number }}"
+                        >
+                            Next
+                        </a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+
+    {% endif %}
+
+</div>
+
+<script src="{% static 'network/network.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="form-page">
+        <div class="form-card">
+            <h2>Create Listing</h2>
+
+            <p class="form-subtitle">
+                Add a new product to CS50 COMMERCE.
+            </p>
+
+            {% if message %}
+                <div class="form-message">
+                    {{ message }}
+                </div>
+            {% endif %}
+
+            <form method="post" class="create-form">
+                {% csrf_token %}
+
+                <div class="form-group-custom">
+                    <label for="title">Title</label>
+
+                    <input
+                        id="title"
+                        type="text"
+                        name="title"
+                        placeholder="Example: PlayStation 5"
+                    >
+                </div>
+
+                <div class="form-group-custom">
+                    <label for="description">Description</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Describe the product..."
+                    ></textarea>
+                </div>
+
+                <div class="form-group-custom">
+                    <label for="starting_bid">Starting Bid</label>
+
+                    <input
+                        id="starting_bid"
+                        type="number"
+                        step="0.01"
+                        name="starting_bid"
+                        placeholder="0.00"
+                    >
+                </div>
+
+                <div class="form-group-custom">
+                    <label for="image_url">
+                        Image URL
+                        <span class="optional-text">Optional</span>
+                    </label>
+
+                    <input
+                        id="image_url"
+                        type="url"
+                        name="image_url"
+                        placeholder="https://example.com/image.jpg"
+                    >
+                </div>
+
+                <div class="form-group-custom">
+                    <label for="category">Category</label>
+
+                    <input
+                        id="category"
+                        type="text"
+                        name="category"
+                        placeholder="Example: Electronics"
+                    >
+                </div>
+
+                <button type="submit" class="create-listing-button">
+                    Create Listing
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

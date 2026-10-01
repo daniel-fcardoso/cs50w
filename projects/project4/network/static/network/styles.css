@@ -1,0 +1,311 @@
+body {
+    margin: 0;
+    background: #f5f8fa;
+    color: #0f1419;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar */
+
+.navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #e6ecf0;
+    padding: 10px 22px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: #1d9bf0 !important;
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-right: 25px;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.nav-link {
+    color: #0f1419 !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 8px 12px !important;
+    margin-right: 4px;
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    color: #1d9bf0 !important;
+    background: #e8f5fd;
+}
+
+/* Main feed */
+
+.body {
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 660px;
+    margin: 22px auto 0;
+    padding: 0;
+    background: #ffffff;
+    border-left: 1px solid #e6ecf0;
+    border-right: 1px solid #e6ecf0;
+    min-height: calc(100vh - 80px);
+}
+
+/* Page titles */
+
+.container > h3 {
+    margin: 0;
+    padding: 16px 18px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    border-bottom: 1px solid #e6ecf0;
+}
+
+/* Cards / posts */
+
+.card {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #e6ecf0;
+    margin-bottom: 0 !important;
+    box-shadow: none;
+    transition: background-color 0.2s ease;
+}
+
+.card:hover {
+    background: #f7f9f9;
+}
+
+.card-body {
+    padding: 16px 18px;
+}
+
+.card-title {
+    margin-bottom: 6px;
+    font-size: 0.98rem;
+    font-weight: 800;
+}
+
+.card-title a {
+    color: #0f1419;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+/* Post content */
+
+.card-text,
+.post-content {
+    margin: 8px 0 12px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #0f1419;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Timestamp */
+
+.text-muted {
+    margin: 8px 0;
+    color: #536471 !important;
+    font-size: 0.82rem;
+}
+
+/* New post */
+
+.container > .card:first-child .card-body {
+    padding: 18px;
+}
+
+.container > .card:first-child h4,
+.container > .card:first-child h2 {
+    margin-bottom: 8px;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+form textarea.form-control,
+textarea.form-control {
+    min-height: 95px;
+    border: none;
+    border-bottom: 1px solid #e6ecf0;
+    border-radius: 0;
+    padding: 12px 2px;
+    resize: vertical;
+    background: transparent;
+    font-size: 1.05rem;
+    box-shadow: none !important;
+}
+
+form textarea.form-control:focus,
+textarea.form-control:focus {
+    border-color: #1d9bf0;
+    background: transparent;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: none !important;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: #1d9bf0;
+    border-color: #1d9bf0;
+    padding: 7px 18px;
+}
+
+.btn-primary:hover {
+    background: #1a8cd8;
+    border-color: #1a8cd8;
+}
+
+.btn-danger {
+    background: #f4212e;
+    border-color: #f4212e;
+}
+
+.btn-danger:hover {
+    background: #dc1e29;
+    border-color: #dc1e29;
+}
+
+.btn-outline-primary {
+    color: #1d9bf0;
+    border-color: #cfd9de;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    color: #1d9bf0;
+    background: #e8f5fd;
+    border-color: #1d9bf0;
+}
+
+.btn-outline-danger {
+    color: #f91880;
+    border-color: transparent;
+    background: transparent;
+}
+
+.btn-outline-danger:hover {
+    color: #f91880;
+    background: #fce7f3;
+    border-color: transparent;
+}
+
+/* Post actions */
+
+.edit-button,
+.like-button {
+    font-size: 0.82rem;
+    padding: 5px 10px;
+}
+
+.edit-button {
+    margin: 2px 8px 4px 0;
+}
+
+.like-button {
+    margin-right: 4px;
+}
+
+[id^="likes-count-"] {
+    color: #536471;
+    font-size: 0.88rem;
+}
+
+/* Profile header */
+
+.container > .card:first-child {
+    background: #ffffff;
+}
+
+.container > .card:first-child p {
+    margin-bottom: 10px;
+    color: #536471;
+}
+
+/* Pagination */
+
+.pagination {
+    justify-content: center;
+    padding: 18px 0;
+    margin: 0;
+}
+
+.page-link {
+    color: #1d9bf0;
+    border-color: #e6ecf0;
+    background: #ffffff;
+}
+
+.page-link:hover {
+    color: #1a8cd8;
+    background: #e8f5fd;
+}
+
+.page-item.disabled .page-link {
+    color: #536471;
+    background: #ffffff;
+}
+
+/* Empty states */
+
+.container > p {
+    padding: 18px;
+    color: #536471;
+}
+
+/* Better spacing for forms */
+
+form {
+    margin-bottom: 0;
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+        margin-right: 10px;
+    }
+
+    .nav-link {
+        padding: 6px 8px !important;
+        font-size: 0.85rem;
+    }
+
+    .container {
+        max-width: 100%;
+        margin-top: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+    .container > h3 {
+        padding: 14px;
+    }
+}

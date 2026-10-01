@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="page-header">
+        <h2>Categories</h2>
+        <p>Browse products by category.</p>
+    </div>
+
+    <div class="category-grid">
+        {% for category in categories %}
+            <a
+                class="category-card"
+                href="{% url 'category' category %}"
+            >
+                <div class="category-card-content">
+                    <span class="category-icon">›</span>
+
+                    <h3>{{ category }}</h3>
+
+                    <span>Explore products</span>
+                </div>
+            </a>
+        {% empty %}
+            <div class="empty-state">
+                <h3>No categories available</h3>
+                <p>There are no categories to display yet.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

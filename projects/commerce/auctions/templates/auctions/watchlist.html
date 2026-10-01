@@ -1,0 +1,64 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="page-header">
+        <h2>Watchlist</h2>
+        <p>Products you are currently watching.</p>
+    </div>
+
+    <div class="listing-grid">
+        {% for listing in listings %}
+            <article class="listing-card">
+                <a
+                    class="listing-image-link"
+                    href="{% url 'listing' listing.id %}"
+                >
+                    {% if listing.image_url %}
+                        <img
+                            class="listing-image"
+                            src="{{ listing.image_url }}"
+                            alt="{{ listing.title }}"
+                        >
+                    {% else %}
+                        <div class="listing-image-placeholder">
+                            No image
+                        </div>
+                    {% endif %}
+                </a>
+
+                <div class="listing-card-body">
+                    <span class="listing-category">
+                        {{ listing.category }}
+                    </span>
+
+                    <h3 class="listing-title">
+                        <a href="{% url 'listing' listing.id %}">
+                            {{ listing.title }}
+                        </a>
+                    </h3>
+
+                    <p class="listing-description">
+                        {{ listing.description }}
+                    </p>
+
+                    <div class="listing-price">
+                        <span>Starting bid</span>
+                        <strong>${{ listing.starting_bid }}</strong>
+                    </div>
+
+                    <a
+                        class="view-listing-button"
+                        href="{% url 'listing' listing.id %}"
+                    >
+                        View Listing
+                    </a>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <h3>Your watchlist is empty</h3>
+                <p>Add products to your watchlist to see them here.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
